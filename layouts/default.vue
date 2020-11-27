@@ -1,7 +1,7 @@
 <template lang="pug">
-  v-app#app.default-layout(v-if="loading")
+  v-app#app.default-layout
     v-main
-      v-container
+      v-container(v-if="loading")
         Nuxt
 </template>
 
@@ -65,11 +65,55 @@ h1 {
   &.big {
     width: 800px;
   }
+  &.main {
+    background-color: $mainColor !important;
+    color: $darkColor;
+  }
   &.default {
     background-color: $defaultColor !important;
     color: $mainColor;
   }
+  &.danger {
+    background-color: $dangerColor !important;
+    color: $mainColor;
+  }
+}
+.multiselect__tags {
+  background: #e6e5e1;
+  input {
+    background: #e6e5e1;
+  }
+  .multiselect__placeholder {
+    color: $defaultColor;
+  }
+  .multiselect__single {
+    background-color: #e6e5e1;
+  }
+  .multiselect__tag {
+    background-color: #6a6a68;
+    i {
+      &::after {
+        color: white;
+      }
+      &:hover {
+        background: #6a6a68;
+      }
+    }
+  }
+}
+.multiselect__content-wrapper > ul {
+  padding: 0;
+}
+.multiselect-span {
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 5px;
+  }
 }
 
 // Кастомные классы
+.field-text {
+  color: #5a5958;
+}
 </style>
