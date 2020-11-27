@@ -1,12 +1,19 @@
 <template lang="pug">
-  v-app#app.default-layout
+  v-app#app.default-layout(v-if="loading")
     v-main
       v-container
         Nuxt
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    loading: false,
+  }),
+  created() {
+    this.loading = true
+  },
+}
 </script>
 
 <style lang="scss">
@@ -37,9 +44,32 @@ export default {}
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.1);
 
     &:hover {
-      transform: translate(0px,-2px);
+      transform: translate(0px, -2px);
       box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.3);
     }
   }
 }
+
+// Переопределение
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1 {
+  font-size: 26px;
+  font-weight: normal;
+}
+
+// Кнопки
+.v-btn {
+  &.big {
+    width: 800px;
+  }
+  &.default {
+    background-color: $defaultColor !important;
+    color: $mainColor;
+  }
+}
+
+// Кастомные классы
 </style>

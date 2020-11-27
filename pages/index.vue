@@ -1,5 +1,7 @@
 <template lang="pug">
   .default-page
+    nuxt-link(to="/create")
+      v-btn.mb-10.big.default(rounded) Создать проект
     ProjectCard(v-for="card in projects" :key="card.id" :card="card")
 </template>
 
@@ -14,8 +16,13 @@ export default {
       {
         id: 'ldsafasfdsfld',
         areas: ['Математика', 'Компьютерные науки', 'Математика'],
-        author: { id: 'dadas', username: 'Вим Олегович', image: 'https://placekitten.com/g/200/200' },
-        description: 'Сделать клевый сервис, что бы победить в хакатоне! Сделать клевый сервис, что бы ервис, что бы победить в хакатоне! Сделать клевый сервис, что бы победить в хакатоне!',
+        author: {
+          id: 'dadas',
+          name: 'Вим Олегович',
+          image: 'https://placekitten.com/g/200/200',
+        },
+        description:
+          'Сделать клевый сервис, что бы победить в хакатоне! Сделать клевый сервис, что бы ервис, что бы победить в хакатоне! Сделать клевый сервис, что бы победить в хакатоне!',
         organisation: {
           title: 'РИНХ',
           id: '3132',
