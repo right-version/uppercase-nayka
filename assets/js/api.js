@@ -17,6 +17,14 @@ export default {
         return documents
     },
 
+    async addProject(db, data) {
+        const ref = await db
+            .firestore()
+            .collection('projects')
+            .add({ ...data})
+        return ref
+    },
+
     async getProjectInfo(db, project_id) {
         const ref = await db
             .firestore()
