@@ -43,4 +43,52 @@ export default {
         })
         return projects
     },
+
+    async addDocument(db, project_id, collection, data) {
+        const ref = await db
+            .firestore()
+            .collection('projects')
+            .doc(project_id)
+            .collection(collection)
+            .add({ ...data, type: collection })
+        return ref
+    },
+
+    async deleteDocument(db, project_id, collection, document_id) {
+        const ref = await db
+            .firestore()
+            .collection('projects')
+            .doc(project_id)
+            .collection(collection)
+            .doc(document_id)
+            .delete()
+        return ref
+    },
+
+    async patchDocument(db, project_id, collection, document_id, data) {
+        const ref = await db
+            .firestore()
+            .collection('projects')
+            .doc(project_id)
+            .collection(collection)
+            .doc(document_id)
+            .set({
+                ...data,
+            })
+        return ref
+    },
+
+    async getDocument(db, project_id, collection, document_id) {
+        const ref = await db
+            .firestore()
+            .collection('projects')
+            .doc(project_id)
+            .collection(collection)
+            .doc(document_id)
+            .get()
+        return {
+            id: ref.id,
+            ...ref.data(),
+        }
+    },
 }
