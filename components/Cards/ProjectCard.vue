@@ -19,7 +19,8 @@
       .project-card__line
       .project-card__footer
         v-spacer
-        v-btn.main Подробнее
+        nuxt-link(:to="`projects/${card.id}`")
+          v-btn.main Подробнее
 
 
 </template>

@@ -80,7 +80,7 @@ export default {
       const formData = { ...this.form, author: this.user }
       const response = await api.addProject(this.$firebase, formData)
       if (response.id) {
-        this.$router.push(`/project/${response.id}`)
+        this.$router.push(`/projects/${response.id}`)
       }
     },
   },
