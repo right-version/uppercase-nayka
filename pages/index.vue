@@ -1,7 +1,6 @@
 <template lang="pug">
   .default-page
     nuxt-link(to="/create")
-      v-btn.mb-10.big.default(rounded) Создать проект
     ProjectCard(v-for="card in projects" :key="card.id" :card="card")
 </template>
 

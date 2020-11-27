@@ -48,15 +48,19 @@ h1 {
   }
   &.main {
     background-color: $mainColor !important;
-    color: $darkColor;
+    color: $darkColor !important;
   }
   &.default {
     background-color: $defaultColor !important;
-    color: $mainColor;
+    color: $mainColor !important;
+  }
+  &.success {
+    background-color: $successColor !important;
+    color: $darkColor !important;
   }
   &.danger {
     background-color: $dangerColor !important;
-    color: $mainColor;
+    color: $mainColor !important;
   }
 }
 .multiselect__tags {
@@ -83,7 +87,7 @@ h1 {
   }
 }
 .multiselect__content-wrapper > ul {
-  padding: 0;
+  padding: 0 !important;
 }
 .multiselect-span {
   display: flex;
