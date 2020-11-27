@@ -1,119 +1,12 @@
 <template lang="pug">
   v-app#app.default-layout
     v-main
-      v-container(v-if="loading")
+      v-container
         Nuxt
 </template>
 
 <script>
-export default {
-  data: () => ({
-    loading: false,
-  }),
-  created() {
-    this.loading = true
-  },
-}
+export default {}
 </script>
 
-<style lang="scss">
-.default-layout {
-  .v-main {
-    background: $mainColor;
-  }
-}
-.card-tags {
-  position: relative;
-  display: inline;
-  width: 100%;
-  .card-tag {
-    padding: 7px 15px 7px 15px;
-    border-radius: 5px;
-    margin-right: 10px;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 100%;
-    text-overflow: ellipsis;
-    background-color: $mainColor;
-    color: $darkColor;
-    display: inline-block;
-    cursor: pointer;
-    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.1);
-
-    &:hover {
-      transform: translate(0px, -2px);
-      box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.3);
-    }
-  }
-}
-
-// Переопределение
-a {
-  text-decoration: none;
-  color: inherit;
-}
-h1 {
-  font-size: 26px;
-  font-weight: normal;
-}
-
-// Кнопки
-.v-btn {
-  &.big {
-    width: 800px;
-  }
-  &.main {
-    background-color: $mainColor !important;
-    color: $darkColor;
-  }
-  &.default {
-    background-color: $defaultColor !important;
-    color: $mainColor;
-  }
-  &.danger {
-    background-color: $dangerColor !important;
-    color: $mainColor;
-  }
-}
-.multiselect__tags {
-  background: #e6e5e1;
-  input {
-    background: #e6e5e1;
-  }
-  .multiselect__placeholder {
-    color: $defaultColor;
-  }
-  .multiselect__single {
-    background-color: #e6e5e1;
-  }
-  .multiselect__tag {
-    background-color: #6a6a68;
-    i {
-      &::after {
-        color: white;
-      }
-      &:hover {
-        background: #6a6a68;
-      }
-    }
-  }
-}
-.multiselect__content-wrapper > ul {
-  padding: 0;
-}
-.multiselect-span {
-  display: flex;
-  align-items: center;
-  i {
-    margin-right: 5px;
-  }
-}
-
-// Кастомные классы
-.field-text {
-  color: #5a5958;
-}
-</style>
+<style lang="scss"></style>

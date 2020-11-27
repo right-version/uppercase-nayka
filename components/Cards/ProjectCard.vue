@@ -8,7 +8,7 @@
         v-avatar(color="#68b3c8" size="50")
           img(:src="card.author.image")
         span.ml-4 {{ card.author.name}}&nbsp;
-        span ({{ card.organisation }})
+        span(v-if="card.organisation") ({{ card.organisation }})
       .project-card__description.mb-5 {{ card.description }}
 
       .card-tags

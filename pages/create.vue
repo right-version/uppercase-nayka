@@ -61,7 +61,7 @@ export default {
       description: '',
       date: new Date().toString(),
       user: {},
-      organisation: [],
+      organisation: null,
       areas: [],
     },
     nameRules: [(v) => !!v || 'Name is required'],
