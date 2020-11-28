@@ -6,7 +6,7 @@
       color="#68b3c8"
       dense
       v-model="alert"
-    ) Фейк-заявка принята, ожидайте...
+    ) Ваша заявку будет рассмотрена автором проекта;)
     .project-card-content
       h1.project-card__title {{ card.title }}
       .project-card__line
