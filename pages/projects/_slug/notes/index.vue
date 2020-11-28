@@ -111,8 +111,8 @@ export default {
       }
     }
 
-    dateArr.reverse()
-    timeArr.reverse()
+    // dateArr.reverse()
+    // timeArr.reverse()
     return { notesData, dateArr, timeArr, full, colorCards }
   },
   data: () => ({
