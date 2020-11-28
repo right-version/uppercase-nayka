@@ -9,3 +9,10 @@ Vue.filter('date', (date) => {
     day: 'numeric',
   })
 })
+
+Vue.filter('datehour', (date) => {
+  return new Date(date).toLocaleString('ru-RU', {
+    hour: 'numeric',
+    minute: 'numeric',
+  })
+})

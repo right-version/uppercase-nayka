@@ -109,11 +109,47 @@ h1 {
   }
 }
 
+.page {
+  margin-bottom: 60px;
+}
+
 // Кастомные классы
 .field-text {
   color: #5a5958;
+  .field-text__description {
+    color: black;
+    background: #e6e5e1;
+    max-width: 500px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    img {
+      max-width: 480px;
+      height: auto;
+      width: 100%;
+    }
+  }
+  .tags {
+    max-width: 500px;
+    display: inline;
+    .tag {
+      padding: 5px 12px 5px 12px;
+      border-radius: 5px;
+      margin-right: 10px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      background-color: #6a6a68;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
 }
-
 .project-card {
   max-width: 800px;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.3);
