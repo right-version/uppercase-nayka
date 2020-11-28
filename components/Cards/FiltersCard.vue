@@ -7,23 +7,16 @@
         :items="options.authors"
         filled
         label="Выберите автора"
-        @change="$event === 'Любой' ? filterQuery(['author'], {author: $event}) : filterQuery(['author'])"
+        @input="$event !== 'Любой' ? filterQuery(['author'], {author: $event}) : filterQuery(['author'])"
       )
       .project-card__line 
       h1.project-card__title Организация
-      //- v-select(
-      //-   :value="$route.query.organisation || 'Любой'"
-      //-   :items="options.organisations"
-      //-   filled
-      //-   label="Выберите организацию"
-      //-   @change="$event === 'Любой' ? filterQuery(['organisation'], {organisation: $event}) : filterQuery(['organisation'])"
-      //- )
       v-select(
-        :value="$route.query.area || 'Любой'"
+        :value="$route.query.organisation || 'Любой'"
         :items="options.organisations"
         filled
-        label="Выберите область"
-        @change="$event === 'Любой' ? filterQuery(['area'], {area: $event}) : filterQuery(['area'])"
+        label="Выберите организацию"
+        @input="$event !== 'Любой' ? filterQuery(['organisation'], {organisation: $event}) : filterQuery(['organisation'])"
       )
       .project-card__line 
       h1.project-card__title Область
@@ -32,7 +25,7 @@
         :items="options.areas"
         filled
         label="Выберите область"
-        @change="$event === 'Любой' ? filterQuery(['area'], {area: $event}) : filterQuery(['area'])"
+        @input="$event !== 'Любой' ? filterQuery(['area'], {area: $event}) : filterQuery(['area'])"
       )
 
 </template>

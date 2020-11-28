@@ -1,10 +1,15 @@
 <template lang="pug">
   .default-page
     .default-page__left
-      ProjectCard(v-for="card in results" :key="card.id" :card="card")
+      template(v-if="results.length > 0")
+        ProjectCard(v-for="card in results" :key="card.id" :card="card")
+      template(v-else)
+        p Результатов нет =(
+        v-btn(@click="filterQuery(['area', 'title', 'organisation', 'author'])") Сбросить фильтры
+    
     .default-page__right
       FiltersCard(:options="options")
-    
+
 </template>
 
 <script>
@@ -12,8 +17,10 @@ import api from '~/assets/js/api'
 import ProjectCard from '~/components/Cards/ProjectCard.vue'
 import FiltersCard from '~/components/Cards/FiltersCard.vue'
 import * as https from 'https'
+import queryMixin from '~/mixins/query.mixin.js'
 
 export default {
+  mixins: [queryMixin],
   components: {
     ProjectCard,
     FiltersCard,
@@ -57,6 +64,24 @@ export default {
         return (el.title + ' ' + el.description)
           .toLowerCase()
           .includes(query.title.toLowerCase())
+      })
+    }
+
+    if (query.author) {
+      copy = copy.filter((el) => {
+        return el.author.name === query.author
+      })
+    }
+
+    if (query.organisation) {
+      copy = copy.filter((el) => {
+        return el.organisation === query.organisation
+      })
+    }
+
+    if (query.area) {
+      copy = copy.filter((el) => {
+        return el.areas.includes(query.area)
       })
     }
 
@@ -116,6 +141,24 @@ export default {
           return (el.title + ' ' + el.description)
             .toLowerCase()
             .includes(value.title.toLowerCase())
+        })
+      }
+
+      if (value.author) {
+        copy = copy.filter((el) => {
+          return el.author.name === value.author
+        })
+      }
+
+      if (value.organisation) {
+        copy = copy.filter((el) => {
+          return el.organisation === value.organisation
+        })
+      }
+
+      if (value.area) {
+        copy = copy.filter((el) => {
+          return el.areas.includes(value.area)
         })
       }
 
