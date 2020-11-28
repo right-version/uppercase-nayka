@@ -16,7 +16,7 @@
             v-icon mdi-chevron-right
             | {{ link.title }}
         v-spacer
-        v-responsive(max-width="300")
+        v-responsive(max-width="300" min-width="100" width="70%")
           v-text-field(
             :value="$route.query.title || ''"
             dense

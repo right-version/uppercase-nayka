@@ -20,10 +20,35 @@ export default {
   },
   async asyncData({ $firebase, query }) {
     const projects = await api.getAllProjects($firebase)
+
+    const pr = projects.map((el) => el.author.name).filter((el) => el)
+    const ar = projects
+      .map((el) => el.areas)
+      .flat()
+      .filter((el) => el)
+    const or = projects.map((el) => el.organisation).filter((el) => el)
+
     const options = {
-      authors: [],
-      areas: [],
-      organisations: [],
+      authors: [
+        'Любой',
+        ...pr.filter(function (item, pos) {
+          return pr.indexOf(item) == pos
+        }),
+      ],
+      areas: [
+        'Любой',
+        ...ar
+          .filter(function (item, pos) {
+            return ar.indexOf(item) == pos
+          })
+          .filter((el) => el),
+      ],
+      organisations: [
+        'Любой',
+        ...or.filter(function (item, pos) {
+          return or.indexOf(item) == pos
+        }),
+      ],
     }
 
     let copy = JSON.parse(JSON.stringify(projects))
@@ -113,7 +138,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 350px;
   }
 
   @media (max-width: 1200px) {

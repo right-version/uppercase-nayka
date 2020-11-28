@@ -1,42 +1,48 @@
 <template lang="pug">
   .project-card
     .project-card-content
-      h1.project-card__title Выберите автора
-      multiselect(
-        :options="options.authors"
-        :multiple="true"
-        :close-on-select="false"
-        :clear-on-select="false"
-        :preserve-search="true"
+      h1.project-card__title Автор
+      v-select(
+        :value="$route.query.author || 'Любой'"
+        :items="options.authors"
+        filled
+        label="Выберите автора"
+        @change="$event === 'Любой' ? filterQuery(['author'], {author: $event}) : filterQuery(['author'])"
       )
       .project-card__line 
-
-      h1.project-card__title Выберите организацию
-      multiselect(
-        :options="options.organisations"
-        :multiple="true"
-        :close-on-select="false"
-        :clear-on-select="false"
-        :preserve-search="true"
+      h1.project-card__title Организация
+      //- v-select(
+      //-   :value="$route.query.organisation || 'Любой'"
+      //-   :items="options.organisations"
+      //-   filled
+      //-   label="Выберите организацию"
+      //-   @change="$event === 'Любой' ? filterQuery(['organisation'], {organisation: $event}) : filterQuery(['organisation'])"
+      //- )
+      v-select(
+        :value="$route.query.area || 'Любой'"
+        :items="options.organisations"
+        filled
+        label="Выберите область"
+        @change="$event === 'Любой' ? filterQuery(['area'], {area: $event}) : filterQuery(['area'])"
       )
-
       .project-card__line 
-      h1.project-card__title Выберите область
-      multiselect(
-        :options="options.areas"
-        :multiple="true"
-        :close-on-select="false"
-        :clear-on-select="false"
-        :preserve-search="true"
+      h1.project-card__title Область
+      v-select(
+        :value="$route.query.area || 'Любой'"
+        :items="options.areas"
+        filled
+        label="Выберите область"
+        @change="$event === 'Любой' ? filterQuery(['area'], {area: $event}) : filterQuery(['area'])"
       )
-
 
 </template>
 
 <script>
-import Multiselect from 'vue-multiselect'
+import api from '~/assets/js/api'
+import queryMixin from '~/mixins/query.mixin.js'
+
 export default {
-  components: { Multiselect },
+  mixins: [queryMixin],
   props: {
     options: {
       type: Object,
