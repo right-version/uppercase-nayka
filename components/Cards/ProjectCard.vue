@@ -12,7 +12,11 @@
       .project-card__description.mb-5 {{ card.description }}
 
       .card-tags
-        .card-tag(v-for="(area, i) in card.areas" :key="'a-' + card.title + area")
+        .card-tag(
+          v-for="(area, i) in card.areas" 
+          :key="'a-' + card.title + area"
+          @click.prevent="filterQuery(['area'], {area: area})"
+        )
           v-icon.mr-1(small) mdi-pin
           | {{ area }}
 
@@ -26,7 +30,10 @@
 </template>
 
 <script>
+import queryMixin from '~/mixins/query.mixin.js'
+
 export default {
+  mixins: [queryMixin],
   props: {
     card: {
       type: Object,
