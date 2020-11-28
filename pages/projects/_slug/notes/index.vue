@@ -23,7 +23,7 @@
                 )
                 v-row( justify="space-between")
                   nuxt-link.notes-link(
-                  :to="`/project/${$route.params.slug}/notes/${localData.id}`"
+                  :to="`/projects/${$route.params.slug}/notes/${localData.id}`"
                   )
                     v-col(cols="7")
                       .notes-name {{localData.user.name}}
