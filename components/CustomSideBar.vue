@@ -37,7 +37,7 @@ export default {
     pages: [
       { title: 'Записи', href: '/#', icon: 'mdi-note' },
       { title: 'Эксперименты', href: '/#', icon: 'mdi-flask' },
-      { title: 'Источники', href: '/#', icon: 'mdi-link-variant' },
+      { title: 'Источники', href: '/sources', icon: 'mdi-link-variant' },
       { title: 'Поиск по тегам', href: '/#', icon: 'mdi-tag' },
       { title: 'Граф знаний', href: '/#', icon: 'mdi-graphql' },
     ],
