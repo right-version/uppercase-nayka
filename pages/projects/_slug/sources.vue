@@ -3,7 +3,7 @@
   v-row.mb-4.mt-4(no-gutters)
     h1 Управление источниками
     v-spacer
-    v-btn.mr-2(text) Экспортировать в BibTeX
+    //- v-btn.mr-2(text) Экспортировать в BibTeX
     v-btn.color-default.mb-2(rounded, @click='openModal = true; type = "add"') Добавить источник
   SourcesTable(
     :sources='sources',

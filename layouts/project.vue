@@ -6,7 +6,7 @@ v-app
     v-app-bar(app)
       client-only
         v-app-bar-nav-icon.hidden-lg-and-up(@click.stop='sidebar = !sidebar')
-        .project-title.h2 {{ project.title || ''}}
+        nuxt-link.project-title.h2(:to="`/projects/${$route.params.slug}`" style="color: black;") {{ project.title || ''}}
     v-container
       nuxt
 
