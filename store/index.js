@@ -1,8 +1,8 @@
 export const state = () => ({
   user: {
     id: 'xxx',
-    image: 'https://placekitten.com/g/201/201',
-    name: 'Сыр Герычев',
+    image: 'https://placekitten.com/g/200/200',
+    name: 'Герман Катамаранов',
     email: 'drink_vodka_bue_lodka@mail.ru',
   },
   icons: {
