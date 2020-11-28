@@ -1,11 +1,6 @@
 <template lang="pug">
   v-navigation-drawer( app :value="drawer" @input="$emit('input', $event)" dark)
     v-list-item.logo(to="/")
-      trinity-rings-spinner(
-          :animation-duration="3500"
-          :size="50"
-          color="#ff1d5e")
-      img(src='../assets/logo.png').logo-img
     v-divider
     v-list
       v-list-item(class="px-2")

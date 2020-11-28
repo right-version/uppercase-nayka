@@ -7,6 +7,7 @@
 import api from '~/assets/js/api'
 
 export default {
+  layout: 'project',
   async asyncData({ $firebase, params }) {
     const project = await api.getProjectInfo($firebase, params.slug)
     return { project }
