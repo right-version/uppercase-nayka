@@ -5,7 +5,7 @@
         v-model="alert"
         dismissible
         color="#f3bb45"
-      ) Привет! Ты попал на нашу демо версию системы nayka. Ты можешь создать свой собственный проект или посмотреть существующие. Кстати теперь ты {{user.name}}. С уважением uppercase.
+      ) Привет! Вы попали на демо версию системы "Наука" от команды UPPERCASE. Вы можете создать свой собственный проект или посмотреть уже существующие. Кстати, ваше секретное имя - {{user.name}}. С уважением, UPPERCASE.
       template(v-if="results.length > 0")
         ProjectCard(v-for="card in results" :key="card.id" :card="card")
       .no-results(v-else)
