@@ -26,7 +26,7 @@ v-dialog(:value='dialog', max-width='500px', @input='!$event ? close() : null')
         v-row.mt-2
           v-spacer
           v-btn.color-default(rounded, @click='close') Отмена
-          v-btn.color-danger.ml-2(rounded, @click='save') Сохранить
+          v-btn.color-danger.ml-2(rounded, @click='save' :loading="loading") Сохранить
 </template>
 
 <script>
@@ -53,6 +53,7 @@ export default {
     valid: true,
     nameRules: [(v) => !!v || 'Name is required'],
     semantic: null,
+    loading: false
   }),
   computed: {
     formTitle() {
@@ -61,6 +62,7 @@ export default {
   },
   methods: {
     async save() {
+      this.loading = true
       let papers = {
         id1: {
           title: this.form.title,
@@ -70,7 +72,8 @@ export default {
       this.$refs.form.validate()
       papers = JSON.stringify(papers)
       const response = await this.$axios.$post(
-        'http://87.117.25.190:5000/api/analyse/',
+        // 'http://87.117.25.190:5000/api/analyse/',
+        'http://localhost:5000/api/analyse/',
         papers,
         {
           headers: {
@@ -79,13 +82,13 @@ export default {
           },
         }
       )
-      console.log(response)
       if (this.valid) {
         this.$emit('save', {
           ...this.form,
           date: new Date().toString(),
           cso: response.id1.enhanced,
         })
+        this.loading = false
         this.close()
       }
     },
