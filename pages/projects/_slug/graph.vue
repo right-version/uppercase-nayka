@@ -1,5 +1,6 @@
 <template lang="pug">
 .page.page_graph
+  .double-click Use double-click to ref
   .alert
     .alert__wrap
       .alert__boll(style="background-color: #68b3c8;")
@@ -41,6 +42,7 @@ export default {
     nodeSize: 20,
     canvas: false,
     alert: true,
+    timer: null,
   }),
   methods: {
     lcb(link) {
@@ -48,9 +50,14 @@ export default {
       return link
     },
     onClick(event, obj) {
-      const path = `/projects/${this.$route.params.slug}/`
+      if (!this.timer) {
+        this.timer = setTimeout(() => {
+          this.timer = null
+        }, 500)
+        return
+      }
 
-      console.log(obj.type)
+      const path = `/projects/${this.$route.params.slug}/`
 
       if (obj.type === 'sources') {
         this.$router.push(path + 'sources')
@@ -81,6 +88,13 @@ export default {
 <style lang="scss">
 .page_graph {
   position: relative;
+
+  .double-click {
+    position: absolute;
+    opacity: 0.3;
+    bottom: 0px;
+  }
+
   .alert {
     display: flex;
     align-items: center;
