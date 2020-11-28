@@ -4,11 +4,6 @@
       v-container.py-0.fill-height
         v-app-bar-nav-icon.hidden-md-and-up(@click="drawer = !drawer")
         
-        semipolar-spinner.mr-4.hidden-sm-and-down(
-          :animation-duration="2000"
-          :size="55"
-          color="#7ac29a"
-        )
         nuxt-link(to="/" style="color: white;")
           v-toolbar-title.mr-10.hidden-sm-and-down NAYKA
 
@@ -35,11 +30,6 @@
         div.mt-10
           nuxt-link(to="/")
             v-btn(text)
-              semipolar-spinner.mr-4(
-                :animation-duration="2000"
-                :size="60"
-                color="#7ac29a"
-              )
               h1 NAYKA
         
         div.mt-10
@@ -54,9 +44,7 @@
 </template>
 
 <script>
-import { SemipolarSpinner } from 'epic-spinners'
 export default {
-  components: { SemipolarSpinner },
   data: () => ({
     links: [
       { title: 'Профиль', href: '/user' },

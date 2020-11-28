@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { TrinityRingsSpinner } from 'epic-spinners'
 export default {
   model: {
     prop: 'drawer',
@@ -33,9 +32,6 @@ export default {
       type: Boolean,
       default: true,
     },
-  },
-  components: {
-    TrinityRingsSpinner,
   },
   data: () => ({
     pages: [
