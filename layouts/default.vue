@@ -3,7 +3,7 @@
     v-app-bar(fixed app)
       v-container.py-0.fill-height
         v-app-bar-nav-icon.hidden-md-and-up(@click="drawer = !drawer")
-        
+        Spinner.mr-3.hidden-sm-and-down
         nuxt-link(to="/" style="color: white;")
           v-toolbar-title.mr-10.hidden-sm-and-down NAYKA
 
@@ -33,7 +33,8 @@
       temporar
     )
       v-col
-        div.mt-10
+        div.mt-10.ml-3
+          Spinner
           nuxt-link(to="/")
             v-btn(text)
               h1 NAYKA
@@ -50,9 +51,11 @@
 </template>
 
 <script>
+import Spinner from '~/components/Spinner.vue'
 import queryMixin from '~/mixins/query.mixin.js'
 
 export default {
+  components: { Spinner },
   mixins: [queryMixin],
   data: () => ({
     links: [

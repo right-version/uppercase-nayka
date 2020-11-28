@@ -23,8 +23,10 @@
       .project-card__line
       .project-card__footer
         v-spacer
+        nuxt-link(to="/#")
+          v-btn.mr-2.info Подать заявку
         nuxt-link(:to="`projects/${card.id}`")
-          v-btn.main Подробнее
+          v-btn.success Подробнее
 
 
 </template>

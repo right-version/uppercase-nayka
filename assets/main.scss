@@ -62,6 +62,18 @@ h1 {
     background-color: $dangerColor !important;
     color: $mainColor !important;
   }
+  &.primary {
+    background-color: #7a9e9f !important;
+    color: $mainColor !important;
+  }
+  &.info {
+    background-color: #68b3c8 !important;
+    color: $mainColor !important;
+  }
+  &.warning {
+    background-color: #f3bb45 !important;
+    color: $mainColor !important;
+  }
 }
 .multiselect__tags {
   background: #e6e5e1;
