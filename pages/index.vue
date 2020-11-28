@@ -1,6 +1,10 @@
 <template lang="pug">
   .default-page
-    ProjectCard(v-for="card in results" :key="card.id" :card="card")
+    .default-page__left
+      ProjectCard(v-for="card in results" :key="card.id" :card="card")
+    .default-page__right
+      | Поиск по преподавателям
+    
 </template>
 
 <script>
@@ -43,7 +47,7 @@ export default {
     papers = JSON.stringify(papers)
     try {
       const response = await this.$axios.$post(
-        'http://87.117.25.190:5000/api/analyse/',
+        'https://87.117.25.190:5000/api/analyse/',
         papers,
         {
           headers: {
@@ -77,7 +81,27 @@ export default {
 <style lang="scss" scoped>
 .default-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  .default-page__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .default-page__right {
+    width: 200px;
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+
+    .default-page__left {
+      margin-right: 0;
+    }
+
+    .default-page__right {
+      width: 100%;
+      order: -1;
+    }
+  }
 }
 </style>
