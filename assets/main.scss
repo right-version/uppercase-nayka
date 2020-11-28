@@ -3,10 +3,12 @@
     background: $mainColor;
   }
 }
+
 .card-tags {
   position: relative;
   display: inline;
   width: 100%;
+
   .card-tag {
     padding: 7px 15px 7px 15px;
     border-radius: 5px;
@@ -36,6 +38,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 h1 {
   font-size: 26px;
   font-weight: normal;
@@ -46,64 +49,81 @@ h1 {
   &.big {
     width: 800px;
   }
+
   &.main {
     background-color: $mainColor !important;
     color: $darkColor !important;
   }
+
   &.default {
     background-color: $defaultColor !important;
     color: $mainColor !important;
   }
+
   &.success {
     background-color: $successColor !important;
     color: $darkColor !important;
   }
+
   &.danger {
     background-color: $dangerColor !important;
     color: $mainColor !important;
   }
+
   &.primary {
     background-color: #7a9e9f !important;
     color: $mainColor !important;
   }
+
   &.info {
     background-color: #68b3c8 !important;
     color: $mainColor !important;
   }
+
   &.warning {
     background-color: #f3bb45 !important;
     color: $mainColor !important;
   }
 }
+
 .multiselect__tags {
   background: #e6e5e1;
+
   input {
     background: #e6e5e1;
   }
+
   .multiselect__placeholder {
     color: $defaultColor;
   }
+
   .multiselect__single {
     background-color: #e6e5e1;
   }
+
   .multiselect__tag {
     background-color: #6a6a68;
+
     i {
       &::after {
         color: white;
       }
+
       &:hover {
         background: #6a6a68;
       }
     }
   }
 }
-.multiselect__content-wrapper > ul {
+
+.multiselect__content-wrapper>ul {
   padding: 0 !important;
 }
+
 .multiselect-span {
   display: flex;
   align-items: center;
+
   i {
     margin-right: 5px;
   }
@@ -116,6 +136,7 @@ h1 {
 // Кастомные классы
 .field-text {
   color: #5a5958;
+
   .field-text__description {
     color: black;
     background: #e6e5e1;
@@ -124,15 +145,18 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+
     img {
       max-width: 480px;
       height: auto;
       width: 100%;
     }
   }
+
   .tags {
     max-width: 500px;
     display: inline;
+
     .tag {
       padding: 5px 12px 5px 12px;
       border-radius: 5px;
@@ -142,14 +166,29 @@ h1 {
       margin-bottom: 5px;
       white-space: nowrap;
       overflow: hidden;
-      max-width: 100%;
+      max-width: 600px;
       text-overflow: ellipsis;
       background-color: #6a6a68;
       display: inline-block;
       cursor: pointer;
     }
+
+    .tag--link {
+      display: flex;
+      align-items: center;
+      white-space: break-spaces;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .tags-icon {
+      width: 40px;
+      justify-content: flex-start;
+    }
+
   }
 }
+
 .project-card {
   max-width: 800px;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.3);

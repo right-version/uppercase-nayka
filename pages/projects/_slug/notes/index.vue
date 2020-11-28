@@ -19,8 +19,8 @@
                 :color="`${colorCards[i]}`"
                 icon-color="grey lighten-2"
                 small
-                v-for="(localData, i) in timeArr[i]"
-                :key="i + '-' + 'localData.id'"
+                v-for="(localData, j) in timeArr[i]"
+                :key="j + '-' + 'localData.id'"
                 )
                 v-row( justify="space-between")
                   nuxt-link.notes-link(
