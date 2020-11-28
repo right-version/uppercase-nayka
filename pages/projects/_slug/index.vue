@@ -6,6 +6,7 @@
       //-     .project-card__title Области исследования
       //-     .project-card__line
       canvas#canvas-pie(name="semantic" width="500" height="500" )
+      | {{ project }}
 </template>
 
 <script>
@@ -14,12 +15,11 @@ import Chart from 'chart.js'
 export default {
   layout: 'project',
   async asyncData({ $firebase, params }) {
-    const project = await api.getProjectInfo($firebase, params.slug)
     const semantic = await api.getSemanticInfo($firebase, params.slug)
     const sliced = Object.entries(semantic)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-    return { project, sliced }
+    return { sliced }
   },
   mounted() {
     const context = this.$el.querySelector('#canvas-pie').getContext('2d')
@@ -42,6 +42,11 @@ export default {
         ],
       },
     })
+  },
+  computed: {
+    project() {
+      return this.$store.state.project
+    },
   },
 }
 </script>

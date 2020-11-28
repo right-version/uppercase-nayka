@@ -4,11 +4,13 @@ v-app
 
   v-main.custom-light
     v-app-bar(app)
-      v-app-bar-nav-icon(v-if='!sidebar', @click.stop='sidebar = !sidebar')
+      client-only
+        v-app-bar-nav-icon.hidden-lg-and-up(@click.stop='sidebar = !sidebar')
+        .project-title.h2 {{ project.title || ''}}
     v-container
       nuxt
 
-    v-footer(app, absolute)
+    v-footer(app absolute)
       v-col.text-center(cols='12')
         span &copy; {{ new Date().getFullYear() }} - UPPERCASE
 </template>
@@ -22,8 +24,22 @@ export default {
   data: () => ({
     sidebar: true,
   }),
+  async created() {
+    if (this.$route.params.slug) {
+      const project = await api.getProjectInfo(
+        this.$firebase,
+        this.$route.params.slug
+      )
+      this.$store.commit('SET_PROJECT', project)
+    }
+  },
   beforeMount() {
     if (window.innerWidth < 1264) this.sidebar = false
+  },
+  computed: {
+    project() {
+      return this.$store.state.project
+    },
   },
 }
 </script>
@@ -32,5 +48,13 @@ export default {
 .v-main {
   background: $mainColor !important;
   padding-bottom: 0 !important;
+
+  .project-title {
+    width: 100%;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 </style>

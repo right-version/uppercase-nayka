@@ -6,7 +6,7 @@
       nuxt-link(:to="$route.path + '/add'")
         v-btn.color-default.mb-2(rounded) Добавить запись
     .app
-      v-container(style="max-width: 600px")
+      v-container(style="max-width: 600px" v-if="dateArr.length > 0")
         .simple-card(v-for="(res, i) in dateArr")
           .simple-card-content
             v-timeline(dense clipped)
@@ -40,10 +40,44 @@ export default {
     const [notes] = await Promise.all([
       api.getCollection($firebase, params.slug, 'notes'),
     ])
+
+    const full = [
+      'января',
+      'февраля',
+      'марта',
+      'апреля',
+      'мая',
+      'июня',
+      'июля',
+      'августа',
+      'сентября',
+      'октября',
+      'ноября',
+      'декабря',
+    ]
+    const colorCards = [
+      '#7ac29a',
+      '#f3bb45',
+      '#68b3c8',
+      '#7a9e9f',
+      '#eb5e28',
+      '#7ac29a',
+      '#f3bb45',
+      '#68b3c8',
+      '#7a9e9f',
+      '#eb5e28',
+    ]
+
     const notesData = [...notes]
-    const dateChanges = new Date(notesData[0].date)
+    let dateChanges = new Date()
     const dateArr = []
     const timeArr = []
+
+    if (notes.length === 0)
+      return { notesData, dateArr, timeArr, full, colorCards }
+
+    dateChanges = new Date(notesData[0].date)
+
     for (let i = 0; i < notesData.length; i++) {
       let globalDate = new Date(notesData[i].date)
       let changeGlobalDate =
@@ -76,21 +110,7 @@ export default {
         arrDateByGlobalDate = []
       }
     }
-    const full = [
-      'января',
-      'февраля',
-      'марта',
-      'апреля',
-      'мая',
-      'июня',
-      'июля',
-      'августа',
-      'сентября',
-      'октября',
-      'ноября',
-      'декабря',
-    ]
-    const colorCards = ['#7ac29a', '#f3bb45', '#68b3c8', '#7a9e9f', '#eb5e28', '#7ac29a', '#f3bb45', '#68b3c8', '#7a9e9f', '#eb5e28']
+
     dateArr.reverse()
     timeArr.reverse()
     return { notesData, dateArr, timeArr, full, colorCards }

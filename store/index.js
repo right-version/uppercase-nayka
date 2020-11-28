@@ -15,4 +15,11 @@ export const state = () => ({
     labs: '#7ac29a',
     sources: '#68b3c8',
   },
+  project: {},
 })
+
+export const mutations = {
+  SET_PROJECT(state, project) {
+    state.project = Object.assign(project, state.project)
+  },
+}

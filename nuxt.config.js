@@ -20,6 +20,9 @@ export default {
       },
     ],
   },
+  loading: {
+    color: '#7ac29a',
+  },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['vue-multiselect/dist/vue-multiselect.min.css', '~/assets/main.scss'],
