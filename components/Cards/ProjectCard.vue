@@ -1,17 +1,24 @@
 <template lang="pug">
   .project-card
+    v-alert.alert(
+      dismissible
+      type="info"
+      color="#68b3c8"
+      dense
+      v-model="alert"
+    ) Фейк-заявка принята, ожидайте...
     .project-card-content
       h1.project-card__title {{ card.title }}
       .project-card__line
 
-      .project-card__author.mb-2
+      .project-card__author.mb-2(v-if="!short")
         v-avatar(color="#68b3c8" size="50")
           img(:src="card.author.image")
         span.ml-4 {{ card.author.name}}&nbsp;
         span(v-if="card.organisation") ({{ card.organisation }})
-      .project-card__description.mb-5 {{ card.description }}
+      .project-card__description.mb-5(v-if="!short") {{ card.description }}
 
-      .card-tags
+      .card-tags(v-if="!short")
         .card-tag(
           v-for="(area, i) in card.areas" 
           :key="'a-' + card.title + area"
@@ -20,11 +27,10 @@
           v-icon.mr-1(small) mdi-pin
           | {{ area }}
 
-      .project-card__line
+      .project-card__line(v-if="!short")
       .project-card__footer
         v-spacer
-        nuxt-link(to="/#")
-          v-btn.mr-2.info Подать заявку
+        v-btn.mr-2.info(@click="applay" v-if="!my") Подать заявку
         nuxt-link(:to="`projects/${card.id}`")
           v-btn.success Подробнее
 
@@ -41,6 +47,27 @@ export default {
       type: Object,
       requared: true,
     },
+    short: {
+      type: Boolean,
+      default: false,
+    },
+    my: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data: () => ({
+    timer: null,
+    alert: false,
+  }),
+  methods: {
+    applay() {
+      this.alert = true
+      this.timer = setTimeout(() => {
+        this.alert = false
+        this.timer = null
+      }, 4000)
+    },
   },
 }
 </script>
@@ -54,6 +81,14 @@ export default {
   border-radius: 6px;
   margin-bottom: 20px;
   width: 100%;
+
+  .alert {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    z-index: 100;
+    max-width: 90%;
+  }
 
   .project-card-content {
     padding: 15px 15px 10px;

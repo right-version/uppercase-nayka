@@ -1,7 +1,7 @@
 export const state = () => ({
   user: {
     id: 'xxx',
-    image: 'https://picsum.photos/200',
+    image: '',
     name: null,
     email: '',
     edu: '',
@@ -31,6 +31,7 @@ export const mutations = {
       state.user.edu = user.EduName
       state.user.program = user.EduProgram
       state.user.id = user.Email
+      state.user.image = `https://picsum.photos/200/?lock=${123}`
     }
   },
 }
