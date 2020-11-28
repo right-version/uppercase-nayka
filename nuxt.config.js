@@ -12,6 +12,13 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src:
+          'https://cdn.tiny.cloud/1/95awdtpkg3t5xq9owc294038iskj496b4onmsj9h208apwn9/tinymce/5/tinymce.min.js',
+        referrerpolicy: 'origin',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
