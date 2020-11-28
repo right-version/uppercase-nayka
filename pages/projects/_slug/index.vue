@@ -1,8 +1,11 @@
 <template lang="pug">
   .project-page
     .project-page__labs
-      p Лабораторные
-      canvas#canvas-pie(:name="name" width="300" height="300")
+      .project-card
+        .project-card-content
+          .project-card__title Области исследования
+          .project-card__line
+          canvas#canvas-pie(name="semantic" width="300" height="300")
 </template>
 
 <script>
@@ -12,18 +15,29 @@ export default {
   layout: 'project',
   async asyncData({ $firebase, params }) {
     const project = await api.getProjectInfo($firebase, params.slug)
-    return { project }
+    const semantic = await api.getSemanticInfo($firebase, params.slug)
+    const sliced = Object.entries(semantic)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+    return { project, sliced }
   },
   mounted() {
     const context = this.$el.querySelector('#canvas-pie').getContext('2d')
+
     const myChart = new Chart(context, {
       type: 'doughnut',
       data: {
-        labels: ['Не активены', 'Активны', 'Завершены'],
+        labels: this.sliced.map((el) => el[0]),
         datasets: [
           {
-            backgroundColor: ['#7ac29a', '#f3bb45', '#eb5e28'],
-            data: [3, 2, 15],
+            backgroundColor: [
+              '#7a9e9f',
+              '#68b3c8',
+              '#7ac29a',
+              '#f3bb45',
+              '#eb5e28',
+            ],
+            data: this.sliced.map((el) => el[1]),
           },
         ],
       },

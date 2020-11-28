@@ -117,13 +117,11 @@ export default {
     ref.forEach((doc) => {
       documents.push(Object.values(doc.cso))
     })
-    let tags = Array.from(new Set(documents.flat()))
     const x = {}
     documents = documents.flat()
     for (let i = 0, j = documents.length; i < j; i++) {
       x[documents[i]] = (x[documents[i]] || 0) + 1
     }
-    console.log(tags)
-    console.log(x)
+    return x
   },
 }

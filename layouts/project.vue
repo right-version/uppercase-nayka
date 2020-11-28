@@ -30,6 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-main {
+  background: $mainColor !important;
   padding-bottom: 0 !important;
 }
 </style>
