@@ -21,6 +21,7 @@
     "firebase": "^8.1.1",
     "firebase-admin": "^9.4.1",
     "nuxt": "^2.14.6",
+    "vue-d3-network": "^0.1.28",
     "vue-multiselect": "^2.1.6"
   },
   "devDependencies": {
