@@ -1,6 +1,11 @@
 <template lang="pug">
   .default-page
     .default-page__left
+      v-alert.default-alert(
+        v-model="alert"
+        dismissible
+        color="#f3bb45"
+      ) Привет! Ты попал на нашу демо версию системы nayka. Ты можешь создать свой собственный проект или посмотреть существующие. Кстати теперь ты {{user.name}}. С уважением uppercase.
       template(v-if="results.length > 0")
         ProjectCard(v-for="card in results" :key="card.id" :card="card")
       .no-results(v-else)
@@ -88,6 +93,20 @@ export default {
     const results = copy
     return { projects, results, options }
   },
+  data: () => ({
+    alert: false,
+  }),
+  mounted() {
+    if (!localStorage.alert) {
+      this.alert = true
+      localStorage.alert = true
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
+    },
+  },
   watch: {
     '$route.query'(value) {
       let copy = JSON.parse(JSON.stringify(this.projects))
@@ -132,6 +151,11 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
+
+    .default-alert {
+      max-width: 800px;
+      width: 100%;
+    }
 
     .no-results {
       display: flex;
