@@ -102,7 +102,7 @@
             nuxt-link.tag(
               v-for="(tag, i) in form.tags"
               :key="'notes-tag-' + i"
-              :to="`/project/${$route.params.slug}/search?str=${tag.title}`"
+              :to="`/projects/${$route.params.slug}/search?str=${tag.title}`"
             ) {{'#' + tag.title }}
         .field-text.mt-4(v-if="form.links.length > 0") Обратные ссылки
           br
@@ -110,7 +110,7 @@
             nuxt-link.tag(
               v-for="(link, i) in form.links"
               :key="'notes-link-' + i"
-              :to="`/project/${$route.params.slug}/${link.type}/${link.id}`"
+              :to="`/projects/${$route.params.slug}/${link.type}`+ (link.type !== 'sources' ? `/${link.id}` : '')"
             ) 
               v-icon.mr-1(color="#fff") {{ icons[link.type] || 'mdi-alert-octagon'}}
               | {{ link.title }}

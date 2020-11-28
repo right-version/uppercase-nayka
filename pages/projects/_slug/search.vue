@@ -5,8 +5,9 @@
         v-for="(tag, i) in tags"
         :key="'tag' + i"
         @click="filterQuery(['str'], {str: tag})"
+        :class="{active: $route.query.str === tag}"
       ) {{'#' + tag }}
-    .tags-pool-empty(v-else="tags.length < 0") Увы, тегов не найдено:(
+    .tags-pool-empty(v-else) Увы, тегов нет :(
 
     SimpleCard(
       v-for="(res, i) in results"
@@ -38,7 +39,7 @@ export default {
     results = all.filter((el) => {
       return el.tags.map((el) => el.title).includes(query.str)
     })
-    
+
     return { tags: Array.from(tags), all, results }
   },
   watch: {
@@ -47,6 +48,14 @@ export default {
         return el.tags.map((el) => el.title).includes(value.str)
       })
     },
+  },
+  mounted() {
+    if (!this.$route.query.str) {
+      console.log(this.tags)
+      if (this.tags.length > 0) {
+        this.filterQuery(['str'], { str: this.tags[0] })
+      }
+    }
   },
   methods: {
     // Remove and Add query
@@ -88,6 +97,10 @@ export default {
     background-color: #6a6a68;
     display: inline-block;
     cursor: pointer;
+
+    &.active {
+      background-color: #7a9e9f;
+    }
   }
 }
 .tags-pool-empty {

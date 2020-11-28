@@ -59,26 +59,24 @@
     template(v-else)
       .field-text.mt-4(v-if="form.description") Описание
         .field-text__description {{ form.description }}
-      .field-text.mt-4(v-if="form.tags.length > 0") Теги
-        br
-        .tags
-          nuxt-link.tag(
-            v-for="tag in form.tags"
-            :key="'notes-tag-' + i"
-            :to="`/projects/${$route.params.slug}/search?str=${tag.title}`"
-          ) {{'#' + tag.title }}
-      .field-text.mt-4(v-if="form.links.length > 0") Обратные ссылки
-        br
-        .tags
-          nuxt-link.tag.tag--link(
+        .field-text.mt-4(v-if="form.tags.length > 0") Теги
+          br
+          .tags
+            nuxt-link.tag(
+              v-for="(tag, i) in form.tags"
+              :key="'notes-tag-' + i"
+              :to="`/projects/${$route.params.slug}/search?str=${tag.title}`"
+            ) {{'#' + tag.title }}
+        .field-text.mt-4(v-if="form.links.length > 0") Обратные ссылки
+          br
+          .tags
+            nuxt-link.tag(
               v-for="(link, i) in form.links"
               :key="'notes-link-' + i"
-              :to="`/projects/${$route.params.slug}/sources`"
-            )
-              v-icon(color="#7ac29a").tags-icon {{ 'mdi-flask' }}
-              .tag-title {{ link.title }}
-      //- .field-text.mt-4(v-if="form.files.length > 0") Файлы
-      //-   span(v-if="link in form.") {{ link + ' ' }}
+              :to="`/projects/${$route.params.slug}/${link.type}`+ (link.type !== 'sources' ? `/${link.id}` : '')"
+            ) 
+              v-icon.mr-1(color="#fff") {{ icons[link.type] || 'mdi-alert-octagon'}}
+              | {{ link.title }}
 </template>
 
 <script>
