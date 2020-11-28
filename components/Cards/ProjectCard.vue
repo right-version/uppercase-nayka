@@ -66,6 +66,9 @@ export default {
 
     .project-card__title {
       font-size: 26px;
+      @media (max-width: 800px) {
+        font-size: 18px;
+      }
     }
 
     .project-card__line {
@@ -77,6 +80,12 @@ export default {
 
     .project-card__footer {
       display: flex;
+
+      @media (max-width: 800px) {
+        .v-btn {
+          font-size: 0.7em;
+        }
+      }
     }
   }
 }

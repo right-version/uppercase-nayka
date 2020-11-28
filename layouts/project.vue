@@ -32,6 +32,10 @@ export default {
       )
       this.$store.commit('SET_PROJECT', project)
     }
+
+    this.$axios
+      .$get('http://api.randomdatatools.ru/?unescaped=true')
+      .then((res) => this.$store.commit('SET_USER', res))
   },
   beforeMount() {
     if (window.innerWidth < 1264) this.sidebar = false

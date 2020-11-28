@@ -64,6 +64,11 @@ export default {
     ],
     drawer: false,
   }),
+  created() {
+    this.$axios
+      .$get('http://api.randomdatatools.ru/?unescaped=true')
+      .then((res) => this.$store.commit('SET_USER', res))
+  },
 }
 </script>
 

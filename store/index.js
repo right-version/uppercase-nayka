@@ -1,9 +1,11 @@
 export const state = () => ({
   user: {
     id: 'xxx',
-    image: 'https://placekitten.com/g/200/200',
-    name: 'Герман Катамаранов',
-    email: 'drink_vodka_bue_lodka@mail.ru',
+    image: 'https://picsum.photos/200',
+    name: null,
+    email: '',
+    edu: '',
+    program: '',
   },
   icons: {
     notes: 'mdi-note',
@@ -20,6 +22,15 @@ export const state = () => ({
 
 export const mutations = {
   SET_PROJECT(state, project) {
-    state.project = Object.assign(project, state.project)
+    state.project = Object.assign({}, project)
+  },
+  SET_USER(state, user) {
+    if (state.user.name === null) {
+      state.user.name = user.FirstName + ' ' + user.LastName
+      state.user.email = user.Email
+      state.user.edu = user.EduName
+      state.user.program = user.EduProgram
+      state.user.id = user.Email
+    }
   },
 }

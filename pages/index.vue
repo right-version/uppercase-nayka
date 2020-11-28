@@ -139,7 +139,10 @@ export default {
       flex-direction: column;
       min-width: 800px;
       margin-top: 15px;
-      width: 100%;
+
+      @media (max-width: 800px) {
+        width: 100%;
+      }
     }
   }
 
