@@ -7,19 +7,25 @@
         nuxt-link(to="/" style="color: white;")
           v-toolbar-title.mr-10.hidden-sm-and-down NAYKA
 
-        nuxt-link.hidden-sm-and-down(v-for="link in links" :to="link.href" :key="link.title")
+        nuxt-link.hidden-sm-and-down(
+          v-for="link in links"
+          :to="link.href"
+          :key="link.title"
+        )
           v-btn(text) 
             v-icon mdi-chevron-right
             | {{ link.title }}
         v-spacer
         v-responsive(max-width="300")
           v-text-field(
+            :value="$route.query.title || ''"
             dense
             hide-details
             label="Поиск проектов"
             solo
             append-icon="mdi-magnify"
             clearable
+            @input="$event ? filterQuery(['title'], {title: $event}) : filterQuery(['title'])"
           )
     v-navigation-drawer(
       v-model="drawer"
@@ -44,7 +50,10 @@
 </template>
 
 <script>
+import queryMixin from '~/mixins/query.mixin.js'
+
 export default {
+  mixins: [queryMixin],
   data: () => ({
     links: [
       { title: 'Профиль', href: '/user' },

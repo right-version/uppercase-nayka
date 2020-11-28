@@ -13,6 +13,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/dotenv": "^1.4.1",
     "core-js": "^3.6.5",
     "firebase": "^8.1.1",

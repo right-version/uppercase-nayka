@@ -44,6 +44,7 @@ export default {
   color: #252422;
   border-radius: 6px;
   margin-bottom: 20px;
+  width: 100%;
 
   .project-card-content {
     padding: 15px 15px 10px;
