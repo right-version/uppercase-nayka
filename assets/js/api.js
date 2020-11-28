@@ -177,10 +177,18 @@ export default {
     const all_documents = [...notes, ...sources, ...labs]
 
     all_documents.forEach((doc) => {
+      let active = false
+      if (doc.type === 'labs') {
+        if (doc.progress.map((el) => el.checked).some((el) => !el)) {
+          active = true
+        }
+      }
       nodes.push({
         id: doc.id,
         name: doc.title,
-        _cssClass: doc.type,
+        type: doc.type,
+        _cssClass: active ? 'labs--active' : doc.type,
+        _labelClass: doc.type + 'l',
       })
     })
     all_documents.forEach((doc) => {
