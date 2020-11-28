@@ -50,8 +50,41 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   async asyncData() {
-    const areas = ['Математика', 'Компьютерные науки', 'Нейросети']
-    const organisations = ['РИНХ', 'Мехмат (ЮФУ)', 'Какой то институт (ДГТУ)']
+    const areas = [
+      'anomaly detection',
+      'architecture types',
+      'artificial intelligence',
+      'bandwidth',
+      'classification methods',
+      'computer crime',
+      'computer networks',
+      'computer science',
+      'computer system firewalls',
+      'congestion control (communication)',
+      'cryptography',
+      'intelligent buildings',
+      'internet',
+      'intrusion detection',
+      'linguistics',
+      'local area networks',
+      'machine learning',
+      'mathematics',
+      'network protocols',
+      'network security',
+      'neural networks',
+      'operating systems',
+      'pattern recognition',
+      'personal communication systems',
+      'range finding',
+      'security of data',
+      'semantics',
+      'smart environment',
+      'telecommunication traffic',
+      'transmission control protocol',
+      'ultra-wideband (uwb)',
+      'wireless telecommunication systems',
+    ]
+    const organisations = ['РИНХ', 'Мехмат (ЮФУ)', 'ДГТУ', 'МГУ', 'МФТИ', 'КФУ', 'СПбПУ', 'ВШЭ']
     return { areas, organisations }
   },
   components: { Multiselect },
