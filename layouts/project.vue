@@ -35,7 +35,15 @@ export default {
 
     this.$axios
       .$get('http://api.randomdatatools.ru/?unescaped=true')
-      .then((res) => this.$store.commit('SET_USER', res))
+      .then((res) => {
+        if (res.LastName) {
+          this.$store.commit('SET_USER', res)
+        } else {
+          this.$axios
+            .$get('http://api.randomdatatools.ru/?unescaped=true')
+            .then((res) => this.$store.commit('SET_USER', res))
+        }
+      })
   },
   beforeMount() {
     if (window.innerWidth < 1264) this.sidebar = false
