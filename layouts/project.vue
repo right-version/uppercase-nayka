@@ -27,3 +27,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.v-main {
+  padding-bottom: 0 !important;
+}
+</style>
