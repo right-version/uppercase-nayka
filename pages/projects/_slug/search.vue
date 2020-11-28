@@ -1,11 +1,12 @@
 <template lang="pug">
   .page
-    .tags
+    .tags(v-if="tags.length > 0")
       .tag(
         v-for="(tag, i) in tags"
         :key="'tag' + i"
         @click="filterQuery(['str'], {str: tag})"
       ) {{'#' + tag }}
+    .tags-pool-empty(v-else="tags.length < 0") Увы, тегов не найдено:(
 
     SimpleCard(
       v-for="(res, i) in results"
@@ -37,6 +38,7 @@ export default {
     results = all.filter((el) => {
       return el.tags.map((el) => el.title).includes(query.str)
     })
+    
     return { tags: Array.from(tags), all, results }
   },
   watch: {
@@ -87,6 +89,11 @@ export default {
     display: inline-block;
     cursor: pointer;
   }
+}
+.tags-pool-empty {
+  font-size: 26px;
+  font-weight: normal;
+  text-align: center;
 }
 .v-text-field {
   width: 500px;

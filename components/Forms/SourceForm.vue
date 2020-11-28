@@ -72,8 +72,8 @@ export default {
       this.$refs.form.validate()
       papers = JSON.stringify(papers)
       const response = await this.$axios.$post(
-        // 'http://87.117.25.190:5000/api/analyse/',
-        'http://localhost:5000/api/analyse/',
+        'http://87.117.25.190:5000/api/analyse/',
+        //'http://localhost:5000/api/analyse/',
         papers,
         {
           headers: {

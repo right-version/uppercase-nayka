@@ -5,7 +5,7 @@
         .simple-card__icon
           v-icon(:color="colors[card.type]") {{ icons[card.type] }} 
         nuxt-link.simple-card__title(
-          :to="`/project/${$route.params.slug}/${card.type}/${card.id}`"
+          :to="`/projects/${$route.params.slug}/${card.type}/${card.id}`"
         ) {{ card.title || '' }}
       .simple-card__line
       .field-text
@@ -13,7 +13,7 @@
           nuxt-link.tag(
             v-for="(tag, i) in card.tags"
             :key="'cardtag' + tag.id + i"
-            :to="`/project/${$route.params.slug}/search?str=${tag.title}`"
+            :to="`/projects/${$route.params.slug}/search?str=${tag.title}`"
           ) {{'#' + tag.title }}
 </template>
 

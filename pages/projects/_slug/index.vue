@@ -2,47 +2,48 @@
   .project-page.project-page--main
     .project-card
     v-row(no-gutters)
-      .project-card
-        .project-card-content
-          .project-card__title Описание проекта и автор
-          .project-card__line
-          v-avatar(v-if="project && project.author" color="#68b3c8" size="40")
-            img(:src="project.author.image")
-          span.ml-4(v-if="project && project.author") {{ project.author.name}}&nbsp;
-          .project-card__title.mt-2 {{ project.description }}
+      .project-card__container
+        .project-card
+          .project-card-content
+            .project-card__title Описание проекта и автор
+            .project-card__line
+            v-avatar(v-if="project && project.author" color="#68b3c8" size="40")
+              img(:src="project.author.image")
+            span.ml-4(v-if="project && project.author") {{ project.author.name}}&nbsp;
+            .project-card__title.mt-2 {{ project.description }}
 
-      .project-card
-        .project-card-content
-          .project-card__title Овервью
-          .project-card__line
-          .project-card__left-right
-            .project-card__left
-              canvas#canvas-pie2(name="overview" width="500" height="500" )
-            .project-card__right
-              .project-card__title.mt-1(v-if="tags.length")
-                .l-box(style="background-color: #68b3c8;")
-                | Кол-во тегов: {{ tags.length }}
-              .project-card__title.mt-1(v-if="sources.length")
-                .l-box(style="background-color: #7ac29a;")
-                | Кол-во источников: {{ sources.length }}
-              .project-card__title.mt-1(v-if="notes.length")
-                .l-box(style="background-color: #f3bb45;")
-                | Кол-во записей: {{ notes.length }}
-              .project-card__title.mt-1(v-if="labs.length")
-                .l-box(style="background-color: #eb5e28;")
-                | Кол-во лабораторных: {{ labs.length }}
+        .project-card
+          .project-card-content
+            .project-card__title Овервью
+            .project-card__line
+            .project-card__left-right
+              .project-card__left
+                canvas#canvas-pie2(name="overview" width="500" height="500" )
+              .project-card__right
+                .project-card__title.mt-1(v-if="tags.length")
+                  .l-box(style="background-color: #68b3c8;")
+                  | Кол-во тегов: {{ tags.length }}
+                .project-card__title.mt-1(v-if="sources.length")
+                  .l-box(style="background-color: #7ac29a;")
+                  | Кол-во источников: {{ sources.length }}
+                .project-card__title.mt-1(v-if="notes.length")
+                  .l-box(style="background-color: #f3bb45;")
+                  | Кол-во записей: {{ notes.length }}
+                .project-card__title.mt-1(v-if="labs.length")
+                  .l-box(style="background-color: #eb5e28;")
+                  | Кол-во лабораторных: {{ labs.length }}
 
-      .project-card(v-if="sliced.length > 0")
-        .project-card-content
-          .project-card__title Семантический анализ проекта
-          .project-card__line
-          .project-card__left-right
-            .project-card__left
-              canvas#canvas-pie(name="semantic" width="500" height="500" )
-            .project-card__right
-              .project-card__title.mt-1(v-for="(s, i) in sliced") 
-                .l-box(:style="`background-color: ${['#7a9e9f','#68b3c8','#7ac29a','#f3bb45','#eb5e28'][i]}`")
-                | {{ s[0]  | toTitleCase }}: {{ s[1] / slicedMax * 100}}%
+        .project-card(v-if="sliced.length > 0")
+          .project-card-content
+            .project-card__title Семантический анализ проекта
+            .project-card__line
+            .project-card__left-right
+              .project-card__left
+                canvas#canvas-pie(name="semantic" width="500" height="500" )
+              .project-card__right
+                .project-card__title.mt-1(v-for="(s, i) in sliced")
+                  .l-box(:style="`background-color: ${['#7a9e9f','#68b3c8','#7ac29a','#f3bb45','#eb5e28'][i]}`")
+                  | {{ s[0]  | toTitleCase }}: {{ s[1] / slicedMax * 100}}%
 </template>
 
 <script>
@@ -168,6 +169,16 @@ export default {
         }
       }
     }
+
+
   }
 }
+
+.project-card__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
 </style>
