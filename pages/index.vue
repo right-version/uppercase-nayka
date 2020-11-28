@@ -3,19 +3,28 @@
     .default-page__left
       ProjectCard(v-for="card in results" :key="card.id" :card="card")
     .default-page__right
-      | Поиск по преподавателям
+      FiltersCard(:options="options")
     
 </template>
 
 <script>
 import api from '~/assets/js/api'
 import ProjectCard from '~/components/Cards/ProjectCard.vue'
+import FiltersCard from '~/components/Cards/FiltersCard.vue'
+import * as https from 'https'
+
 export default {
   components: {
     ProjectCard,
+    FiltersCard,
   },
   async asyncData({ $firebase, query }) {
     const projects = await api.getAllProjects($firebase)
+    const options = {
+      authors: [],
+      areas: [],
+      organisations: [],
+    }
 
     let copy = JSON.parse(JSON.stringify(projects))
     if (query.title) {
@@ -27,9 +36,9 @@ export default {
     }
 
     const results = copy
-    return { projects, results }
+    return { projects, results, options }
   },
-  async created() {
+  async mounted() {
     let papers = {
       id1: {
         title: 'De-anonymizing Social Networks',
@@ -46,10 +55,23 @@ export default {
     }
     papers = JSON.stringify(papers)
     try {
+      const instance = this.$axios.create({
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false,
+        }),
+      })
+      instance.get('http://87.117.25.190:5000/api/analyse/')
+
+      // At request level
+      const agent = new https.Agent({
+        rejectUnauthorized: false,
+      })
+
       const response = await this.$axios.$post(
-        'https://87.117.25.190:5000/api/analyse/',
+        'http://87.117.25.190:5000/api/analyse/',
         papers,
         {
+          httpsAgent: agent,
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-type': 'application/json',
@@ -88,6 +110,9 @@ export default {
     margin-right: 20px;
   }
   .default-page__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 200px;
   }
 
