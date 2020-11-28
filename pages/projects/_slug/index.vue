@@ -1,11 +1,11 @@
 <template lang="pug">
-  .project-page
+  .project-page2
     .project-page__labs
-      .project-card
-        .project-card-content
-          .project-card__title Области исследования
-          .project-card__line
-          canvas#canvas-pie(name="semantic" width="300" height="300")
+      //- .project-card
+      //-   .project-card-content(style="heigth:500px")
+      //-     .project-card__title Области исследования
+      //-     .project-card__line
+      canvas#canvas-pie(name="semantic" width="500" height="500" )
 </template>
 
 <script>
@@ -47,12 +47,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.project-page {
+.project-page2 {
   .project-page__labs {
     max-width: 300px;
     width: 100%;
     max-height: 300px;
     height: 100%;
   }
+}
+#canvas-pie {
+  position: block !important;
 }
 </style>
