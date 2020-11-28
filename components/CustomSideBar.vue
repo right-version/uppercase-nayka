@@ -36,7 +36,7 @@ export default {
   data: () => ({
     pages: [
       { title: 'Записи', href: '/#', icon: 'mdi-note' },
-      { title: 'Эксперименты', href: '/#', icon: 'mdi-flask' },
+      { title: 'Эксперименты', href: '/labs', icon: 'mdi-flask' },
       { title: 'Источники', href: '/sources', icon: 'mdi-link-variant' },
       { title: 'Поиск по тегам', href: '/#', icon: 'mdi-tag' },
       { title: 'Граф знаний', href: '/#', icon: 'mdi-graphql' },
