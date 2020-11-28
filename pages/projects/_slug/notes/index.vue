@@ -6,7 +6,7 @@
       nuxt-link(:to="$route.path + '/add'")
         v-btn.color-default.mb-2(rounded) Добавить запись
     .app
-      v-container(style="max-width: 600px" v-if="dateArr.length > 0")
+      v-container(style="max-width: 600px" v-if="dateArr.length > 0").container
         .simple-card(v-for="(res, i) in dateArr")
           .simple-card-content
             v-timeline(dense clipped)
@@ -158,5 +158,19 @@ export default {
 }
 .notes-link:hover {
   color: rgb(35, 45, 139);
+}
+
+@media (max-width: 370px) {
+  .container {
+    padding: 4px;
+  }
+  .general-date {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .notes-description {
+    font-size: 14px;
+  }
 }
 </style>
