@@ -13,6 +13,8 @@ v-app
     v-footer(app absolute)
       v-col.text-center(cols='12')
         span &copy; {{ new Date().getFullYear() }} - UPPERCASE
+        a.ml-4(href="https://github.com/right-version/uppercase-nayka" target="_blank" rel="noopener noreferrer")
+          v-icon mdi-git
 </template>
 
 <script>
